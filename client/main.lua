@@ -86,7 +86,7 @@ end)
 ------------------------------------------
 --====================================================================================\
 
-RegisterKeyMapping('mdt', 'Open Police MDT', 'keyboard', 'k')
+RegisterKeyMapping('mdt', 'åben beredskabs MDT', 'keyboard', 'k')
 
 RegisterCommand('mdt', function()
     local plyPed = PlayerPedId()
@@ -97,12 +97,12 @@ RegisterCommand('mdt', function()
             TriggerServerEvent('mdt:requestOfficerData')
         end
     else
-        QBCore.Functions.Notify("Can't do that!", "error")
+        QBCore.Functions.Notify("Det kan du ikke gøre!", "error")
     end
 end, false)
 
 Citizen.CreateThread(function()
-    TriggerEvent('chat:addSuggestion', '/mdt', 'Open the emergency services MDT', {})
+    TriggerEvent('chat:addSuggestion', '/mdt', 'Åben beredskabets MDT', {})
 end)
 
 local function doAnimation()
@@ -260,7 +260,7 @@ RegisterNetEvent('mdt:client:open', function(bulletin, activeUnits, calls, cid)
 
     -- local grade = PlayerData.job.grade.name
 
-    SendNUIMessage({ type = "data", activeUnits = activeUnits, citizenid = cid, ondutyonly = Config.OnlyShowOnDuty, name = "Welcome, " ..PlayerData.job.grade.name..' '..PlayerData.charinfo.lastname:sub(1,1):upper()..PlayerData.charinfo.lastname:sub(2), location = playerStreetsLocation, fullname = PlayerData.charinfo.firstname..' '..PlayerData.charinfo.lastname, bulletin = bulletin })
+    SendNUIMessage({ type = "data", activeUnits = activeUnits, citizenid = cid, ondutyonly = Config.OnlyShowOnDuty, name = "Velkommen, " ..PlayerData.job.grade.name..' '..PlayerData.charinfo.lastname:sub(1,1):upper()..PlayerData.charinfo.lastname:sub(2), location = playerStreetsLocation, fullname = PlayerData.charinfo.firstname..' '..PlayerData.charinfo.lastname, bulletin = bulletin })
     SendNUIMessage({ type = "calls", data = calls })
     TriggerEvent("mdt:client:dashboardWarrants")
 end)
@@ -464,7 +464,7 @@ RegisterNUICallback('SetHouseLocation', function(data, cb)
         coords[#coords+1] = tonumber(word)
     end
     SetNewWaypoint(coords[1], coords[2])
-    QBCore.Functions.Notify('GPS has been set!', 'success')
+    QBCore.Functions.Notify('GPS er blevet indstillet!', 'success')
 end)
 
 --====================================================================================
@@ -700,7 +700,7 @@ RegisterNUICallback("saveVehicleInfo", function(data, cb)
             end
 
             if found == 0 then
-                QBCore.Functions.Notify('Vehicle not found!', 'error')
+                QBCore.Functions.Notify('Køretøj ikke fundet!', 'error')
                 SendNUIMessage({ type = "redImpound" })
             end
         else
@@ -833,9 +833,9 @@ RegisterNetEvent('mdt:client:setRadio', function(radio)
     if type(tonumber(radio)) == "number" then
         exports["pma-voice"]:setVoiceProperty("radioEnabled", true)
         exports["pma-voice"]:setRadioChannel(tonumber(radio))
-        QBCore.Functions.Notify("You have set your radio frequency to "..radio..".", "success")
+        QBCore.Functions.Notify("Du har indstillet radiofrekvensen "..radio..".", "success")
     else
-        QBCore.Functions.Notify("Invalid Station(Please enter a number)", "error")
+        QBCore.Functions.Notify("Forkert Station(Venligst indtast et nr.)", "error")
     end
 end)
 
@@ -921,7 +921,7 @@ RegisterNUICallback("dispatchNotif", function(data, cb)
     if mentioned then
 
         -- Send notification to phone??
-        TriggerEvent('erp_phone:sendNotification', {img = info['profilepic'], title = "Dispatch (Mention)", content = info['message'], time = 7500, customPic = true })
+        TriggerEvent('erp_phone:sendNotification', {img = info['profilepic'], title = "Dispatch (nævn)", content = info['message'], time = 7500, customPic = true })
 
         PlaySoundFrontend(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", false)
         PlaySoundFrontend(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0)
@@ -1013,7 +1013,7 @@ AddEventHandler('ps-mdt:client:selfregister', function()
         if weaponInfos and #weaponInfos > 0 then
             for _, weaponInfo in ipairs(weaponInfos) do
                 TriggerServerEvent('mdt:server:registerweapon', weaponInfo.serialnumber, weaponInfo.weaponurl, weaponInfo.notes, weaponInfo.owner, weaponInfo.weapClass, weaponInfo.weaponmodel)
-                TriggerEvent('QBCore:Notify', "Weapon " .. weaponInfo.weaponmodel .. " has been added to police database.")
+                TriggerEvent('QBCore:Notify', "Våben " .. weaponInfo.weaponmodel .. " er blevet tilføjet politiregisteret.")
                 --print("Weapon added to database")
             end
         else
@@ -1080,7 +1080,7 @@ if Config.UseWolfknightRadar == true then
         local currentPos = GetEntityCoords(PlayerPedId())
         local locationInfo = getStreetandZone(currentPos)
         if not IsPedInAnyPoliceVehicle(PlayerPedId()) then
-            QBCore.Functions.Notify("Not in any Police Vehicle!", "error") 
+            QBCore.Functions.Notify("Du er ikke i et køretøj!", "error") 
             return 
         end
         local data, vData, vehicle = exports["wk_wars2x"]:GetFrontPlate(), {}
@@ -1095,9 +1095,9 @@ if Config.UseWolfknightRadar == true then
                         y = currentPos.y,
                         z = currentPos.z
                     },
-                    message = "Ongoing Traffic Stop",
+                    message = "Igangværende traffikstop",
                     dispatchCode = "10-11",
-                    description = "Ongoing Traffic Stop",
+                    description = "Igangværende traffikstop",
                     firstStreet = locationInfo,
                     model = vehicle.name,
                     plate = lastPlate,
@@ -1114,7 +1114,7 @@ if Config.UseWolfknightRadar == true then
                 coolDown = false
             end)
         else
-            QBCore.Functions.Notify("Traffic Stop Cooldown active!", "error") 
+            QBCore.Functions.Notify("Traffikstop er på nedkøling!", "error") 
         end
     end)
 end
