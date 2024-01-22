@@ -52,16 +52,16 @@ const DojJobs = {
 }
 
 const MONTH_NAMES = [
-  "January",
-  "February",
-  "March",
+  "Januar",
+  "Februar",
+  "Marts",
   "April",
-  "May",
-  "June",
-  "July",
+  "Maj",
+  "Juni",
+  "Juli",
   "August",
   "September",
-  "October",
+  "Oktober",
   "November",
   "December",
 ];
@@ -89,30 +89,30 @@ function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
 }
 
 var quotes = [
-  'Project Sloth On Top!',
-  'A Discord rewrite fixes everything...',
-  'Does anyone even read these?',
-  'The best way to predict your future is to create it.',
-  'Believe you can and you\'re halfway there.',
-  'In three words I can sum up everything I\'ve learned about life: it goes on.',
-  'The only way to do great work is to love what you do.',
-  'Success is not final, failure is not fatal: it is the courage to continue that counts.',
-  'Life is 10% what happens to us and 90% how we react to it.',
-  'The only true wisdom is in knowing you know nothing.',
-  'If you want to live a happy life, tie it to a goal, not to people or things.',
-  'Happiness is not something ready-made. It comes from your own actions.',
-  'The greatest glory in living lies not in never falling, but in rising every time we fall.',
-  'The only thing necessary for the triumph of evil is for good men to do nothing.',
-  'It does not matter how slowly you go as long as you do not stop.',
-  'The best time to plant a tree was 20 years ago. The second best time is now.',
-  'Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.',
-  'Don\'t watch the clock; do what it does. Keep going.',
-  'You miss 100% of the shots you don\'t take.',
-  'You can\'t go back and change the beginning, but you can start where you are and change the ending.',
-  'It\'s not the years in your life that count. It\'s the life in your years.',
-  'The greatest glory in living lies not in never falling, but in rising every time we fall.',
-  'The two most important days in your life are the day you are born and the day you find out why.',
-  'Success is not how high you have climbed, but how you make a positive difference to the world.',
+  'AVANCERET RP i top!',
+  'En Discord-omskrivning fikser alt...',
+  'Læser nogen overhovedet disse?',
+  'Den bedste måde at forudsige din fremtid er at skabe den.',
+  'Tro på, at du kan, og du er halvvejs derhen.',
+  'I tre ord kan jeg opsummere alt, hvad jeg har lært om livet: Det fortsætter.',
+  'Den eneste måde at gøre stor arbejde på er at elske det, du laver.',
+  'Succes er ikke endelig, fiasko er ikke dødelig: Det er modet til at fortsætte, der tæller.',
+  'Livet er 10% det, der sker for os, og 90% hvordan vi reagerer på det.',
+  'Den eneste sande visdom er at vide, at du intet ved.',
+  'Hvis du vil leve et lykkeligt liv, skal du binde det til et mål, ikke til mennesker eller ting.',
+  'Lykke er ikke noget, der er klarlavet. Det kommer fra dine egne handlinger.',
+  'Den største herlighed ved at leve ligger ikke i aldrig at falde, men i at rejse sig hver gang vi falder.',
+  'Det eneste, der er nødvendigt for, at det onde triumfer, er, at gode mennesker ingenting gør.',
+  'Det betyder ikke noget, hvor langsomt du går, så længe du ikke stopper.',
+  'Den bedste tid til at plante et træ var for 20 år siden. Den næstbedste tid er nu.',
+  'Tro på dig selv og alt det, du er. Vid, at der er noget inde i dig, der er større end enhver forhindring.',
+  'Se ikke på uret; gør, hvad det gør. Bliv ved.',
+  'Du misser 100% af de skud, du ikke tager.',
+  'Du kan ikke gå tilbage og ændre begyndelsen, men du kan starte, hvor du er, og ændre slutningen.',
+  'Det er ikke årene i dit liv, der tæller. Det er livet i dine år.',
+  'Den største herlighed ved at leve ligger ikke i aldrig at falde, men i at rejse sig hver gang vi falder.',
+  'De to vigtigste dage i dit liv er den dag, du bliver født, og den dag, du finder ud af hvorfor.',
+  'Succes er ikke, hvor højt du er kravlet, men hvordan du gør en positiv forskel i verden.',
 ]
 
 function randomizeQuote() {
@@ -136,17 +136,17 @@ function timeAgo(dateParam) {
   const isThisYear = today.getFullYear() === date.getFullYear();
 
   if (seconds < 5) {
-    return "Just Now";
+    return "Lige nu";
   } else if (seconds < 60) {
-    return `${seconds} Seconds ago`;
+    return `${seconds} Sekunder siden`;
   } else if (seconds < 90) {
-    return "About a minute ago";
+    return "Ca. 1 minut siden";
   } else if (minutes < 60) {
-    return `${minutes} Minutes ago`;
+    return `${minutes} Minutter siden`;
   } else if (isToday) {
-    return getFormattedDate(date, "Today");
+    return getFormattedDate(date, "I dag");
   } else if (isYesterday) {
-    return getFormattedDate(date, "Yesterday");
+    return getFormattedDate(date, "I går");
   } else if (isThisYear) {
     return getFormattedDate(date, false, true);
   }
@@ -232,7 +232,7 @@ $(document).ready(() => {
 
     const { vehicles, tags, gallery, convictions, incidents, properties, fingerprint } = result;
 
-    $(".manage-profile-editing-title").html(`You are currently editing ${result["firstname"]} ${result["lastname"]}`);
+    $(".manage-profile-editing-title").html(`Du redigerer ${result["firstname"]} ${result["lastname"]}`);
     $(".manage-profile-citizenid-input").val(result['cid']);
     $(".manage-profile-name-input-1").val(result["firstname"]);
     $(".manage-profile-name-input-2").val(result["lastname"]);
@@ -256,13 +256,13 @@ $(document).ready(() => {
     $(".convictions-holder").empty();
     $(".profile-incidents-holder").empty();
 
-    let licencesHTML = '<div style="color: #fff; text-align:center;">No Licenses</div>';
-    let tagsHTML = '<div style="color: #fff; text-align:center;">No Tags</div>';
-    let convHTML = '<div style="color: #fff; text-align:center;">Clean Record</div>';
-    let incidentsHTML = '<div style="color: #fff; text-align:center;">No Incidents</div>';
-    let vehHTML = '<div style="color: #fff; text-align:center;">No Vehicles</div>';
-    let galleryHTML = '<div style="color: #fff; text-align:center;">No Photos</div>';
-    let propertyHTML = '<div style="color: #fff; text-align:center;">No Properties</div>';
+    let licencesHTML = '<div style="color: #fff; text-align:center;">Ingen licensers</div>';
+    let tagsHTML = '<div style="color: #fff; text-align:center;">Ingen tags</div>';
+    let convHTML = '<div style="color: #fff; text-align:center;">Blank attest</div>';
+    let incidentsHTML = '<div style="color: #fff; text-align:center;">Ingen hændelser</div>';
+    let vehHTML = '<div style="color: #fff; text-align:center;">Ingen køretøjer</div>';
+    let galleryHTML = '<div style="color: #fff; text-align:center;">Ingen billeder</div>';
+    let propertyHTML = '<div style="color: #fff; text-align:center;">Ingen ejendomme</div>';
 
     // convert key value pair object of licenses to array
     let licenses = Object.entries(result.licences);
@@ -417,7 +417,7 @@ $(document).ready(() => {
         {
           className: "remove-bulletin",
           icon: "fas fa-times",
-          text: "Remove Item",
+          text: "Fjern genstand",
           info: $(this).data("id"),
           status: $(this).data("title"),
         },
@@ -674,13 +674,13 @@ $(document).ready(() => {
                   if ($(this).text() == "Guilty") {
                     guilty = true;
                   }
-                  if ($(this).text() == "Warrant") {
+                  if ($(this).text() == "Ransagningskendelse") {
                     warrant = true;
                   }
-                  if ($(this).text() == "Processed") {
+                  if ($(this).text() == "Behandlet") {
                     processed = true;
                   }
-                  if ($(this).text() == "Associated") {
+                  if ($(this).text() == "Associeret") {
                     isassociated = true;
                   }
                 }
@@ -769,25 +769,25 @@ $(document).ready(() => {
     function () {
       let template = `
       <div style="color: white;">
-          <p><strong>📝 Summary:</strong></p>
-          <p><em>[Insert Report Summary Here]</em></p>
-          <p>&nbsp;</p>
-          <p><strong>🧍 Hostage:</strong> [Name Here]</p>
-          <p>&nbsp;</p>
-          <p><strong>🗄️ Evidence Location:</strong> Stash # | Drawer #</p>
-          <p>&nbsp;</p>
-          <p><strong>🔪 Weapons/Items Confiscated:</strong></p>
-          <p><em>· [Insert List Here]</em></p>
-          <p>&nbsp;</p>
-          <p>-----</p>
-          <p><strong style="background-color: var(--color-1);">💸 Fine:</strong></p>
-          <p>&nbsp;</p>
-          <p><strong>⌚ Sentence:</strong></p>
-          <p>-----</p>
+        <p><strong>📝 Resumé:</strong></p>
+        <p><em>[Indsæt rapportens resumé her]</em></p>
+        <p>&nbsp;</p>
+        <p><strong>🧍 Gidsel:</strong> [Navn her]</p>
+        <p>&nbsp;</p>
+        <p><strong>🗄️ Placering af beviser:</strong> Gem # | Skuffe #</p>
+        <p>&nbsp;</p>
+        <p><strong>🔪 Beslaglagte våben/genstande:</strong></p>
+        <p><em>· [Indsæt liste her]</em></p>
+        <p>&nbsp;</p>
+        <p>-----</p>
+        <p><strong style="background-color: var(--color-1);">💸 Bøde:</strong></p>
+        <p>&nbsp;</p>
+        <p><strong>⌚ Dom:</strong></p>
+        <p>-----</p>
       </div>
   `;
       $("#manage-incidents-title-input").val(
-        "Name - Charge - " + $(".date").html()
+        "Navn - Sigtelse - " + $(".date").html()
       );
       $(".manage-incidents-reports-content").trumbowyg({
         changeActiveDropdownIcon: true,
@@ -813,7 +813,7 @@ $(document).ready(() => {
       $(".manage-incidents-title-holder").empty();
       $(".manage-incidents-title-holder").prepend(
         `
-            <div class="manage-incidents-title">Manage Incident</div>
+            <div class="manage-incidents-title">Håndtér hændelse</div>
             <div class="manage-incidents-create"> <span class="fas fa-plus" style="margin-top: 3.5px;"></span></div>
             <div class="manage-incidents-save"><span class="fas fa-save" style="margin-top: 3.5px;"></span></div>
             `
@@ -825,7 +825,7 @@ $(document).ready(() => {
       $(".associated-incidents-tags-holder").html("");
 
       $(".manage-incidents-editing-title").html(
-        "You are currently creating a new Incident"
+        "Du oprettet en ny hændelse"
       );
       $(".manage-incidents-editing-title").data("id", 0);
 
@@ -903,8 +903,8 @@ $(document).ready(() => {
       {
         className: "search-vehicle",
         icon: "fas fa-car",
-        text: "Search Vehicle",
-        info: $(this).data("plate"),
+        text: "Søg køretøj",
+        info: $(this).data("Reg.Nr."),
         status: "",
       },
     ];
@@ -927,7 +927,7 @@ $(document).ready(() => {
       {
         className: "make-waypoint",
         icon: "fas fa-map-pin",
-        text: "Make Waypoint",
+        text: "Indstil GPS",
         info: $(this).data("location"),
         status: "",
       },
@@ -963,21 +963,21 @@ $(document).ready(() => {
         {
           className: "remove-image",
           icon: "fas fa-times",
-          text: "Remove Image",
+          text: "Fjern billede",
           info: $(this).attr("src"),
           status: "",
         },
         {
           className: "expand-image",
           icon: "fas fa-expand",
-          text: "Expand Image",
+          text: "Udvid billede",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
         {
           className: "copy-image-link",
           icon: "fa-regular fa-copy",
-          text: "Copy Image Link",
+          text: "Kopiér billed link",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
@@ -1013,7 +1013,7 @@ $(document).ready(() => {
         {
           className: "revoke-licence",
           icon: "fas fa-times",
-          text: "Revoke License",
+          text: "Fjern licens",
           info: info,
           status: status,
         },
@@ -1023,7 +1023,7 @@ $(document).ready(() => {
         {
           className: "give-licence",
           icon: "fas fa-check",
-          text: "Give License",
+          text: "Giv licens",
           info: info,
           status: status,
         },
@@ -1366,27 +1366,27 @@ $(document).ready(() => {
       if ($(".badge-logo").attr("src") == "img/ems_badge.webp") {
         template = `
         <div style="color: white;">
-            <p><strong>📝 ICU Room #: [ # ]</strong></p>
-            <p><strong>Report ID: [ Report ID ]</strong></p>
-            <p><em><br></em></p>
-            <p><strong>🧍Time Admitted: [ Date and Time Here ]</strong>&nbsp;</p>
-            <p><strong>Surgery: [Yes/No]</strong></p>
-            <p><strong>Injuries/Ailments:</strong></p>
-            <p><em>· [Enter List Of Injuries Here]</em><br></p>
-            <p>&nbsp;</p>
-            <p>-----</p>
-            <p><strong style="background-color: var(--color-1);">Additional Attending:</strong><br></p>
-            <p><em>· [ List Any Other Staff Here ]</em></p>
-            <p><strong style="background-color: var(--color-1);">🧑‍🤝‍🧑 Additional Emergency Contacts:</strong><br></p>
-            <p><em>· [ Name And Number ]</em></p>
-            <p><strong style="background-color: var(--color-1);">Notes:</strong><br></p>
-            <p><em>· [Additional Notes Here]</em></p>
-            <p>-----</p>
+          <p><strong>📝 ICU Værelse #: [ # ]</strong></p>
+          <p><strong>Rapport ID: [ Rapport ID ]</strong></p>
+          <p><em><br></em></p>
+          <p><strong>🧍 Indlæggelsestidspunkt: [ Dato og tidspunkt her ]</strong>&nbsp;</p>
+          <p><strong>Operation: [Ja/Nej]</strong></p>
+          <p><strong>Skader/Sygdomme:</strong></p>
+          <p><em>· [Indtast liste over skader her]</em><br></p>
+          <p>&nbsp;</p>
+          <p>-----</p>
+          <p><strong style="background-color: var(--color-1);">Yderligere Deltagende:</strong><br></p>
+          <p><em>· [Liste over andet personale her]</em></p>
+          <p><strong style="background-color: var(--color-1);">🧑‍🤝‍🧑 Yderligere Kontaktpersoner ved Nød:</strong><br></p>
+          <p><em>· [Navn og nummer]</em></p>
+          <p><strong style="background-color: var(--color-1);">Noter:</strong><br></p>
+          <p><em>· [Yderligere noter her]</em></p>
+          <p>-----</p>
         </div>
     `;
       }
       $(".manage-bolos-editing-title").html(
-        "You are currently creating a new BOLO"
+        "Du opretter en eftersøgning"
       );
       $(".manage-bolos-input-title").val("");
       $(".manage-bolos-input-plate").val("");
@@ -1447,7 +1447,7 @@ $(document).ready(() => {
     function () {
       let existing = !(
         $(".manage-bolos-editing-title").html() ==
-        "You are currently creating a new BOLO"
+        "Du opretter en efterlysning"
       );
       let id = $(".manage-bolos-editing-title").data("id");
       let title = $("#bolotitle").val();
@@ -1511,21 +1511,21 @@ $(document).ready(() => {
         {
           className: "remove-image-incident",
           icon: "fas fa-times",
-          text: "Remove Image",
+          text: "Fjern billede",
           info: $(this).attr("src"),
           status: "",
         },
         {
           className: "expand-image",
           icon: "fas fa-expand",
-          text: "Expand Image",
+          text: "Udvid billede",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
         {
           className: "copy-image-link",
           icon: "fa-regular fa-copy",
-          text: "Copy Image Link",
+          text: "Kopiér billede link",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
@@ -1716,7 +1716,7 @@ $(document).ready(() => {
       {
         className: "bolo-delete",
         icon: "fas fa-times",
-        text: "Delete Bolo",
+        text: "Fjern efterlysning",
         info: $(this).data("id"),
         status: "",
       },
@@ -1726,7 +1726,7 @@ $(document).ready(() => {
         {
           className: "bolo-delete",
           icon: "fas fa-times",
-          text: "Delete Check-In",
+          text: "Fjern tjek in",
           info: $(this).data("id"),
           status: "",
         },
@@ -1742,7 +1742,7 @@ $(document).ready(() => {
         {
           className: "add-charge",
           icon: "fas fa-check",
-          text: "Modify Charges",
+          text: "Rediger sigtelser",
           info: $(this).data("name"),
           status: "",
         },
@@ -1854,7 +1854,7 @@ $(document).ready(() => {
       let args = [
           {
             className: "incidents-remove-tag",
-            text: "Remove Tag",
+            text: "Fjern tag",
             info: descr,
             status: "",
           },
@@ -1888,21 +1888,21 @@ $(document).ready(() => {
         {
           className: "bolo-remove-image",
           icon: "fas fa-times",
-          text: "Remove Image",
+          text: "Fjern billede",
           info: $(this).attr("src"),
           status: "",
         },
         {
           className: "expand-image",
           icon: "fas fa-expand",
-          text: "Expand Image",
+          text: "Udvid billede",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
         {
           className: "copy-image-link",
           icon: "fa-regular fa-copy",
-          text: "Copy Image Link",
+          text: "Kopiér billede link",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
@@ -2026,7 +2026,7 @@ $(document).ready(() => {
         {
           className: "associated-incidents-remove-tag",
           icon: "fas fa-times",
-          text: "Remove Tag",
+          text: "Fjern tag",
           info: $(this).html(),
           status: $(this).data("id"),
         },
@@ -2120,7 +2120,7 @@ $(document).ready(() => {
       {
         className: "incidents-remove-tag",
         icon: "fas fa-times",
-        text: "Remove Tag",
+        text: "Fjern tag",
         info: $(this).html(),
         status: "",
       },
@@ -2145,7 +2145,7 @@ $(document).ready(() => {
         {
           className: "remove-tag",
           icon: "fas fa-times",
-          text: "Remove Tag",
+          text: "Fjern tag",
           info: $(this).html(),
           status: "",
         },
@@ -2188,7 +2188,7 @@ $(document).ready(() => {
       {
         className: "incidents-remove-normal-tag",
         icon: "fas fa-times",
-        text: "Remove Tag",
+        text: "Fjern tag",
         info: $(this).html(),
         status: "",
       },
@@ -2399,21 +2399,21 @@ $(document).ready(() => {
         {
           className: "reports-remove-image",
           icon: "fas fa-times",
-          text: "Remove Image",
+          text: "Fjern billede",
           info: $(this).attr("src"),
           status: "",
         },
         {
           className: "expand-image",
           icon: "fas fa-expand",
-          text: "Expand Image",
+          text: "Udvid billede",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
         {
           className: "copy-image-link",
           icon: "fa-regular fa-copy",
-          text: "Copy Image Link",
+          text: "Kopiér billede link",
           info: $(this).attr("src"),
           status: $(this).css("filter"),
         },
@@ -2446,26 +2446,26 @@ $(document).ready(() => {
       if ($(".badge-logo").attr("src") == "img/ems_badge.webp") {
         template = `
     <div style="color: white;">
-        <p><strong>Submitted to ICU?: [Yes/No]</strong></p>
-        <p><strong>Incident Report:</strong></p>
-        <p><em>· [ Brief summary of what happened and who did what while on scene. Note anything that stood out about the scene as well as what was done to treat the patient ]</em></p>
-        <p><strong>List of Injuries:</strong></p>
-        <p><em>· [ State what injury or injuries occurred ]</em></p>
-        <p><strong>Surgical Report:</strong></p>
-        <p><em>· [ Full report on what was done in surgery, list any complications or anything that was found while in operation. Note who was attending and what they did during the surgery. At the end of the report be sure to note the state of the patient after ]</em></p>
-        <p>-----</p>
-        <p><strong>Attending:</strong></p>
-        <p><em>· [ List Any Attending Here ]</em></p>
-        <p><strong>Medications Applied:</strong></p>
-        <p><em>· [ List Any Attending Here ]</em></p>
-        <p>-----</p>
-        <br>
-        <p><strong>Notes:</strong></p>
-        <p><em>[ Additional Notes Here ]</em></p>
+      <p><strong>Indsendt til Intensivafdelingen?: [Ja/Nej]</strong></p>
+      <p><strong>Hændelsesrapport:</strong></p>
+      <p><em>· [ Kort resumé af hvad der skete og hvem der gjorde hvad på stedet. Bemærk alt, der skiller sig ud vedrørende stedet, samt hvad der blev gjort for at behandle patienten ]</em></p>
+      <p><strong>Liste over skader:</strong></p>
+      <p><em>· [ Angiv hvilken skade eller skader der opstod ]</em></p>
+      <p><strong>Operationsrapport:</strong></p>
+      <p><em>· [ Fuld rapport om hvad der blev gjort under operationen, nævn eventuelle komplikationer eller noget, der blev fundet under operationen. Bemærk hvem der deltog, og hvad de gjorde under operationen. Notér til sidst patientens tilstand ]</em></p>
+      <p>-----</p>
+      <p><strong>Deltagende:</strong></p>
+      <p><em>· [ Liste over alle deltagende her ]</em></p>
+      <p><strong>Anvendte medicin:</strong></p>
+      <p><em>· [ Liste over al anvendt medicin her ]</em></p>
+      <p>-----</p>
+      <br>
+      <p><strong>Noter:</strong></p>
+      <p><em>[ Yderligere noter her ]</em></p>
     </div>
 `;}
       $(".manage-reports-editing-title").html(
-        "You are currently creating a new report"
+        "Du opretter en ny rapport"
       );
       $(".manage-reports-input-title").val("");
       $(".manage-reports-input-type").val("");
@@ -2642,7 +2642,7 @@ $(document).ready(() => {
 
                                 <div style="display: flex; flex-direction: column; margin-top: 2.5px; margin-left: 5px; width: 100%; padding: 5px;">
                                 <div style="display: flex; flex-direction: column;">
-                                    <div class="profile-item-title">No Vehicles Matching that search</div>
+                                    <div class="profile-item-title">Ingen køretøjer matcher din søgning</div>
                                     </div>
                                     <div class="profile-bottom-info">
                                     </div>
@@ -2688,14 +2688,14 @@ $(document).ready(() => {
                                 <div class="dmv-item-title">${value.model}</div>
                                     <div class="dmv-tags">
                                         <div class="dmv-tag ${paint}-color">${value.colorName}</div>
-                                        <div class="dmv-tag ${impound}">Impound</div>
-                                        <div class="dmv-tag ${bolo}">BOLO</div>
-                                        <div class="dmv-tag ${stolen}">Stolen</div>
-                                        <div class="dmv-tag ${codefive}">Code 5</div>
+                                        <div class="dmv-tag ${impound}">Deponering</div>
+                                        <div class="dmv-tag ${bolo}">Eftersøgning</div>
+                                        <div class="dmv-tag ${stolen}">Stjålet</div>
+                                        <div class="dmv-tag ${codefive}">Kode 5</div>
                                     </div>
                                 </div>
                                 <div class="dmv-bottom-info">
-                                    <div class="dmv-id">Plate: ${value.plate} · Owner: ${value.owner}</div>
+                                    <div class="dmv-id">Plate: ${value.plate} · Ejer: ${value.owner}</div>
                                 </div>
                             </div>
                         </div>
@@ -2714,7 +2714,7 @@ $(document).ready(() => {
     $.post(
       `https://${GetParentResourceName()}/getVehicleData`,
       JSON.stringify({
-        plate: $(this).data("plate"),
+        plate: $(this).data("Reg.Nr."),
       })
     );
   });
@@ -2816,7 +2816,7 @@ $(document).ready(() => {
           {
             className: "mark-code-5",
             icon: "fas fa-check",
-            text: "Mark as Code 5",
+            text: "Markér som kode 5",
             info: plate,
             status: "",
           },
@@ -2826,7 +2826,7 @@ $(document).ready(() => {
           {
             className: "remove-code-5",
             icon: "fas fa-times",
-            text: "Remove Code 5 Status",
+            text: "fjern kode 5 status",
             info: plate,
             status: "",
           },
@@ -2860,7 +2860,7 @@ $(document).ready(() => {
           {
             className: "mark-stolen",
             icon: "fas fa-check",
-            text: "Mark as Stolen",
+            text: "Markér som stjålet",
             info: plate,
             status: "",
           },
@@ -2870,7 +2870,7 @@ $(document).ready(() => {
           {
             className: "remove-stolen",
             icon: "fas fa-times",
-            text: "Remove Code 5 Status",
+            text: "fjern kode 5 status",
             info: plate,
             status: "",
           },
@@ -2891,7 +2891,7 @@ $(document).ready(() => {
     $(".impound-submit").fadeIn(250);
     $(".impound-form").slideDown(250);
     $(".impound-form").fadeIn(250);
-    $(".impound-form").data("plate", plate);
+    $(".impound-form").data("Reg.Nr.", plate);
     $(".impound-plate").val(plate);
   });
 
@@ -3018,7 +3018,7 @@ $(document).ready(() => {
           {
             className: "impound-vehicle",
             icon: "fas fa-check",
-            text: "State Impound",
+            text: "Status deponeret",
             info: plate,
             status: "",
           },
@@ -3028,14 +3028,14 @@ $(document).ready(() => {
           {
             className: "remove-impound",
             icon: "fas fa-times",
-            text: "Unimpound Vehicle",
+            text: "Fjern deponeret køretøj",
             info: plate,
             status: "",
           },
           {
             className: "status-impound",
             icon: "fas fa-info-circle",
-            text: "View Impound Status",
+            text: "Tjek deponeringsstatus",
             info: plate,
             status: "",
           },
@@ -3111,7 +3111,7 @@ $(document).ready(() => {
 
                                 <div style="display: flex; flex-direction: column; margin-top: 2.5px; margin-left: 5px; width: 100%; padding: 5px;">
                                 <div style="display: flex; flex-direction: column;">
-                                    <div class="profile-item-title">No Weapons Matching that search</div>
+                                    <div class="profile-item-title">Ingen våben matchér din søgning</div>
                                     </div>
                                     <div class="profile-bottom-info">
                                     </div>
@@ -3320,14 +3320,14 @@ $(document).ready(() => {
       {
         className: "view-profile",
         icon: "far fa-eye",
-        text: "View Profile",
+        text: "Vis profil",
         info: $(this).data("cid"),
         status: "",
       },
       {
         className: "view-incident",
         icon: "fas fa-search",
-        text: `View Incident #${$(this).data("id")}`,
+        text: `Vis hændelse #${$(this).data("id")}`,
         info: $(this).data("id"),
         status: "",
       },
@@ -3403,28 +3403,28 @@ $(document).ready(() => {
         {
           className: "toggle-duty",
           icon: "fas fa-thumbtack",
-          text: "Toggle Duty",
+          text: "Skift tjeneste",
           info: cid,
           status: "",
         },
         {
           className: "set-callsign",
           icon: "far fa-id-badge",
-          text: "Set Callsign",
+          text: "Indstil RadioID ",
           info: cid,
           status: "",
         },
         {
           className: "set-radio",
           icon: "fas fa-broadcast-tower",
-          text: "Set Radio",
+          text: "Indstil radio",
           info: cid,
           status: "",
         },
         {
           className: "set-waypoint",
           icon: "fas fa-map-marker-alt",
-          text: "Set Waypoint",
+          text: "Indstil GPS",
           info: cid,
           status: "",
         },
@@ -3514,21 +3514,21 @@ $(document).ready(() => {
             {
               className: "attached-units",
               icon: "fas fa-link",
-              text: "Attached Units",
+              text: "Tilknyttede enheder",
               info: callId,
               status: "",
             },
             {
               className: "Set-Waypoint",
               icon: "fas fa-map-marker-alt",
-              text: "Set Waypoint",
+              text: "Indstil GPS",
               info: callId,
               status: "",
             },
             {
               className: "remove-blip",
               icon: "fa-solid fa-circle-minus",
-              text: "Remove Blip",
+              text: "Fjern Blip",
               info: callId,
               status: "",
             },
@@ -3538,21 +3538,21 @@ $(document).ready(() => {
             {
               className: "attached-units",
               icon: "fas fa-link",
-              text: "Attached Units",
+              text: "Tilknyttede enheder",
               info: callId,
               status: "",
             },
             {
               className: "Set-Waypoint",
               icon: "fas fa-map-marker-alt",
-              text: "Set Waypoint",
+              text: "Indstil GPS",
               info: callId,
               status: "",
             },
             {
               className: "remove-blip",
               icon: "fa-solid fa-circle-minus",
-              text: "Remove Blip",
+              text: "Fjern Blip",
               info: callId,
               status: "",
             },
@@ -3596,7 +3596,7 @@ $(document).ready(() => {
           {
             className: "set-waypoint",
             icon: "fas fa-map-marker-alt",
-            text: "Set Waypoint",
+            text: "Indstil GPS",
             info: cid,
             status: "",
           },
@@ -3632,7 +3632,7 @@ $(document).ready(() => {
         {
           className: "dispatch-reply",
           icon: "fas fa-reply",
-          text: "Reply",
+          text: "Besvar",
           info: mySubString,
           status: "",
         },
@@ -3806,7 +3806,7 @@ $(document).ready(() => {
       color9: "#6E707C",
       color10: "#8F741B",
       image: "img/LSPD.webp",
-      name: "LOS SANTOS POLICE",
+      name: "ARP LS POLICE",
     },
     bcso: {
       color1: "#333333",
@@ -3986,26 +3986,26 @@ $(document).ready(() => {
           }
         $(".bolo-nav-item").html("BOLOs");
         $(".bolos-search-title").html("Bolos");
-        $("#bolos-search-input").attr("placeholder", "Search Bolo...");
-        $(".manage-bolos-title").html("Manage Bolo");
+        $("#bolos-search-input").attr("placeholder", "Søg i register...");
+        $(".manage-bolos-title").html("Håndtér efterlysning");
         $(".manage-bolos-editing-title").html(
-          "You are currently creating a new BOLO"
+          "Du opretter en efterlysning"
         );
-        $(".boloplate-title").html("Plate");
-        $(".boloowner-title").html("Owner");
+        $(".boloplate-title").html("Reg.Nr.");
+        $(".boloowner-title").html("Ejer");
         $(".boloindividual-title").html("Individual");
-        $("#boloplate").attr("placeholder", "Place plate here...");
+        $("#boloplate").attr("placeholder", "Indtast Reg.Nr. her...");
         $("#bolodetail").attr(
           "placeholder",
-          "Bolo detail goes here..."
+          "Eftersøgningsdetaljer her..."
         );
         $("#boloowner").attr(
           "placeholder",
-          "Place vehicle owner here..."
+          "Køretøjsejer info her..."
         );
         $("#boloindividual").attr(
           "placeholder",
-          "Place invidivual here..."
+          "Hvem deltog...?"
         );
         $("#home-warrants-container").fadeIn(0);
         $("#home-reports-container").fadeOut(0);
@@ -4021,10 +4021,10 @@ $(document).ready(() => {
         $(".manage-profile-name-input-1").attr("readonly", true);
         $(".manage-profile-name-input-2").attr("readonly", true);
         $("#reports-officers-involved-tag-title").html(
-          "Officers Involved"
+          "Betjente involveret"
         );
         $("#bolos-officers-involved-tag-title").html(
-          "Officers Involved"
+          "Betjente involveret"
         );
         $(".roster-iframe").attr("src", rosterLink);
         $(".sop-iframe").attr("src", sopLink);
@@ -4053,39 +4053,39 @@ $(document).ready(() => {
         $(".bolos-search-title").html("ICU Check-ins");
         $("#bolos-search-input").attr(
           "placeholder",
-          "Search Check-ins..."
+          "Søg i CHECKins..."
         );
         $(".manage-bolos-title").html("Manage ICU Check-in");
         $(".manage-bolos-editing-title").html(
-          "You are creating a new ICU Check-in"
+          "Du opretter en ny ICU ting"
         );
         $(".boloplate-title").html("Estimated Recovery");
         $(".boloowner-title").html("Emergency Contact");
         $(".boloindividual-title").html("Patient");
         $("#boloplate").attr(
           "placeholder",
-          "Enter recovery time here..."
+          "Indtast din fraværelses tid her..."
         );
         $("#bolodetail").attr(
           "placeholder",
-          "Enter ICU Check-in details here..."
+          "Indtast ICU detaljer her..."
         );
         $("#boloowner").attr(
           "placeholder",
-          "Enter emergency contact here..."
+          "Tilføj kontaktperson..."
         );
         $("#boloindividual").attr(
           "placeholder",
-          "Enter patient name and CID here..."
+          "Indtast Patient info og CID..."
         );
         $(".incidents-nav-item").hide();
         $(".dmv-nav-item").hide();
         $(".cams-nav-item").hide();
         $("#reports-officers-involved-tag-title").html(
-          "EMS Involved"
+          "EMS Involveret"
         );
         $("#bolos-officers-involved-tag-title").html(
-          "EMS Involved"
+          "EMS Involveret"
         );
         $(".dispatch-title-ofsomesort").html("Dispatch");
         $(".dispatch-comms-container").fadeIn(0);
@@ -4659,7 +4659,7 @@ window.addEventListener("message", function (event) {
           {
             className: "incidents-delete",
             icon: "fas fa-times",
-            text: "Delete Incidents",
+            text: "Fjern hændelser",
             info: $(this).data("id"),
             status: "",
           },
@@ -4702,7 +4702,7 @@ window.addEventListener("message", function (event) {
       $(".associated-incidents-tags-holder").html("");
 
       $(".manage-incidents-editing-title").html(
-        "You are currently editing incident " + table["id"]
+        "Du redigerer hændelse " + table["id"]
       );
       $(".manage-incidents-editing-title").data(
         "id",
@@ -4782,7 +4782,7 @@ window.addEventListener("message", function (event) {
       if (PoliceJobs[playerJob] !== undefined || AmbulanceJobs[playerJob] !== undefined) {
         $(".manage-incidents-title-holder").prepend(
           `
-            <div class="manage-incidents-title">Manage Incident</div>
+            <div class="manage-incidents-title">Håndtér hændelse</div>
             <div class="manage-incidents-create"> <span class="fas fa-plus" style="margin-top: 3.5px;"></span></div>
             <div class="manage-incidents-save"><span class="fas fa-save" style="margin-top: 3.5px;"></span></div>
             `
@@ -4792,7 +4792,7 @@ window.addEventListener("message", function (event) {
       } else if (DojJobs[playerJob] !== undefined) {
         $(".manage-incidents-title-holder").prepend(
           `
-            <div class="manage-incidents-title">Manage Incident</div>
+            <div class="manage-incidents-title">Håndtér hændelse</div>
             `
         );
         $(".manage-incidents-title").css("width", "95%");
@@ -4892,9 +4892,9 @@ window.addEventListener("message", function (event) {
             <div class="incidents-person-search-item" data-info="${name} (#${value.id})" data-cid="${value.id}" data-name="${name}" data-callsign="${value.callsign}">
                 <img src="${value.profilepic}" class="incidents-person-search-item-pfp">
                 <div class="incidents-person-search-item-right">
-                    <div class="incidents-person-search-item-right-cid-title">Citizen ID</div>
+                    <div class="incidents-person-search-item-right-cid-title">Borger ID</div>
                     <div class="incidents-person-search-item-right-cid-input"><span class="fas fa-id-card"></span> ${value.id}</div>
-                    <div class="incidents-person-search-item-right-name-title">Name</div>
+                    <div class="incidents-person-search-item-right-name-title">Na</div>
                     <div class="incidents-person-search-item-right-name-input"><span class="fas fa-user"></span> ${name}</div>
                 </div>
             </div>
@@ -4904,7 +4904,7 @@ window.addEventListener("message", function (event) {
     } else if (eventData.type == "boloData") {
       let table = eventData.data;
       $(".manage-bolos-editing-title").html(
-        "You are currently editing BOLO " + table["id"]
+        "Du redigerer i en ransagningsanmodning " + table["id"]
       );
 
       if ($(".badge-logo").attr("src") == "img/ems_badge.webp") {
@@ -4917,7 +4917,7 @@ window.addEventListener("message", function (event) {
 
       $(".manage-bolos-input-title").val(table["title"]);
       $(".manage-bolos-input-plate").val(table["plate"]);
-      $(".manage-bolos-input-owner").val(table["owner"]);
+      $(".manage-bolos-input-owner").val(table["Ejer"]);
       $(".manage-bolos-input-individual").val(table["individual"]);
 
       $(".manage-bolos-reports-content").trumbowyg({
@@ -4997,7 +4997,7 @@ window.addEventListener("message", function (event) {
         }, 1500);
       }
       $(".manage-bolos-editing-title").html(
-        "You are currently editing BOLO " + id
+        "Du redigerer en ransagningsanmodning " + id
       );
       $(".manage-bolos-editing-title").data("id", Number(id));
     } else if (eventData.type == "reportComplete") {
@@ -5016,7 +5016,7 @@ window.addEventListener("message", function (event) {
         }, 1500);
       }
       $(".manage-reports-editing-title").html(
-        "You are currently editing report " + id
+        "Du redigere i en rapport " + id
       );
       $(".manage-reports-editing-title").data("id", Number(id));
     } else if (eventData.type == "reports") {
@@ -5057,7 +5057,7 @@ window.addEventListener("message", function (event) {
           {
             className: "reports-delete",
             icon: "fas fa-times",
-            text: "Delete Report",
+            text: "Fjern rapport",
             info: $(this).data("id"),
             status: "",
           },
@@ -5068,7 +5068,7 @@ window.addEventListener("message", function (event) {
       let table = eventData.data;
 
       $(".manage-reports-editing-title").html(
-        "You are currently editing report " + table["id"]
+        "Du redigerer i en rapport " + table["id"]
       );
 
       $(".manage-reports-editing-title").data("id", Number(table["id"]));
@@ -5182,7 +5182,7 @@ window.addEventListener("message", function (event) {
       $(".weapon-information-title-holder").data( "dbid", table["id"] );
 
       $(".weapon-info-serial-input").val(table["serial"]);
-      $(".weapon-info-owner-input").val(table["owner"]);
+      $(".weapon-info-owner-input").val(table["Ejer"]);
       $(".weapon-info-class-input").val(table["weapClass"]);
       $(".weapon-info-model-input").val(table["weapModel"]);
       $(".weapon-info-imageurl-input").val(table["image"]);
@@ -5210,7 +5210,7 @@ window.addEventListener("message", function (event) {
           {
             className: "weapons-delete",
             icon: "fas fa-times",
-            text: "Delete Weapon Info",
+            text: "Fjern våben info",
             info: $(this).data("id"),
             status: "",
           },
