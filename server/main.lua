@@ -71,14 +71,14 @@ if Config.UseWolfknightRadar == true then
 		local driversLicense = PlayerData.metadata['licences'].driver
 
 		if bolo == true then
-			TriggerClientEvent('QBCore:Notify', src, 'BOLO ID: '..boloId..' | Title: '..title..' | Registered Owner: '..vehicleOwner..' | Plate: '..plate, 'error', Config.WolfknightNotifyTime)
+			TriggerClientEvent('QBCore:Notify', src, 'EFTERLYSNINGS ID: '..boloId..' | Titel: '..title..' | Registreret ejer: '..vehicleOwner..' | RegNr.: '..plate, 'error', Config.WolfknightNotifyTime)
 		end
 		if warrant == true then
-			TriggerClientEvent('QBCore:Notify', src, 'WANTED - INCIDENT ID: '..incidentId..' | Registered Owner: '..owner..' | Plate: '..plate, 'error', Config.WolfknightNotifyTime)
+			TriggerClientEvent('QBCore:Notify', src, 'Efterlysnings ID: '..incidentId..' | Registreret ejer: '..owner..' | Reg.Nr.: '..plate, 'error', Config.WolfknightNotifyTime)
 		end
 
 		if Config.PlateScanForDriversLicense and driversLicense == false and vehicleOwner then
-			TriggerClientEvent('QBCore:Notify', src, 'NO DRIVERS LICENCE | Registered Owner: '..vehicleOwner..' | Plate: '..plate, 'error', Config.WolfknightNotifyTime)
+			TriggerClientEvent('QBCore:Notify', src, 'INTET KØREKORT | REGISTRERET EJER: '..vehicleOwner..' | RegNr.: '..plate, 'error', Config.WolfknightNotifyTime)
 		end
 
 		if bolo or warrant or (Config.PlateScanForDriversLicense and not driversLicense) and vehicleOwner then
@@ -132,7 +132,7 @@ AddEventHandler('playerDropped', function(reason)
 		})
 		if result then
 			local time_formatted = format_time(tonumber(result))
-			sendToDiscord(16711680, "MDT Clock-Out", 'Player: **' ..  firstName .. " ".. lastName .. '**\n\nJob: **' .. PlayerData.job.name .. '**\n\nRank: **' .. PlayerData.job.grade.name .. '**\n\nStatus: **Off Duty**\n Total time:' .. time_formatted, "ps-mdt | Made by Project Sloth")
+			sendToDiscord(16711680, "MDT Clock-Out", 'Borger: **' ..  firstName .. " ".. lastName .. '**\n\nJob: **' .. PlayerData.job.name .. '**\n\nRank: **' .. PlayerData.job.grade.name .. '**\n\nStatus: **Off Duty**\n Total tid:' .. time_formatted, "ARP ")
 		end
 	end
 
@@ -185,7 +185,7 @@ QBCore.Commands.Add("mdtleaderboard", "Show MDT leaderboard", {}, false, functio
 		leaderboard_message = leaderboard_message .. i .. '. **' .. firstName .. ' ' .. lastName .. '** - ' .. total_time .. '\n'
 	end
 
-    sendToDiscord(16753920, "MDT Leaderboard", leaderboard_message, "ps-mdt | Made by Project Sloth")
+    sendToDiscord(16753920, "MDT Leaderboard", leaderboard_message, "ARP")
     TriggerClientEvent('QBCore:Notify', source, "MDT leaderboard sent to Discord!", 'success')
 end)
 
@@ -720,7 +720,7 @@ RegisterNetEvent('mdt:server:newBolo', function(existing, id, title, plate, owne
 				}, function(r)
 					if r then
 						TriggerClientEvent('mdt:client:boloComplete', src, r)
-						TriggerEvent('mdt:server:AddLog', "A new BOLO was created by "..fullname.." with the title ("..title..") and ID ("..id..")")
+						TriggerEvent('mdt:server:AddLog', "En ny efterlysning oprettet  "..fullname.." med titlen ("..title..") og ID ("..id..")")
 					end
 				end)
 			end
@@ -740,7 +740,7 @@ RegisterNetEvent('mdt:server:newBolo', function(existing, id, title, plate, owne
 				}, function(r)
 					if r then
 						TriggerClientEvent('mdt:client:boloComplete', src, id)
-						TriggerEvent('mdt:server:AddLog', "A BOLO was updated by "..fullname.." with the title ("..title..") and ID ("..id..")")
+						TriggerEvent('mdt:server:AddLog', "Efterlysning opdateret "..fullname.." med titlen ("..title..") og ID ("..id..")")
 					end
 				end)
 			end
@@ -762,11 +762,11 @@ RegisterNetEvent('mdt:server:deleteWeapons', function(id)
 			if Config.RemoveWeaponsPerms[Player.PlayerData.job.name][Player.PlayerData.job.grade.level] then
 				local fullName = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 				MySQL.update("DELETE FROM `mdt_weaponinfo` WHERE id=:id", { id = id })
-				TriggerEvent('mdt:server:AddLog', "A Weapon Info was deleted by "..fullName.." with the ID ("..id..")")
+				TriggerEvent('mdt:server:AddLog', "Våben info er slettet "..fullName.." med ID ("..id..")")
 			else
 				local fullname = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 				TriggerClientEvent("QBCore:Notify", src, 'No Permissions to do that!', 'error')
-				TriggerEvent('mdt:server:AddLog', fullname.." tryed to delete a Weapon Info with the ID ("..id..")")
+				TriggerEvent('mdt:server:AddLog', fullname.." forsøgte af slette våben med ID ("..id..")")
 			end
 		end
 	end
@@ -780,11 +780,11 @@ RegisterNetEvent('mdt:server:deleteReports', function(id)
 			if Config.RemoveReportPerms[Player.PlayerData.job.name][Player.PlayerData.job.grade.level] then
 				local fullName = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 				MySQL.update("DELETE FROM `mdt_reports` WHERE id=:id", { id = id })
-				TriggerEvent('mdt:server:AddLog', "A Report was deleted by "..fullName.." with the ID ("..id..")")
+				TriggerEvent('mdt:server:AddLog', "A Report was deleted by "..fullName.." med ID ("..id..")")
 			else
 				local fullname = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 				TriggerClientEvent("QBCore:Notify", src, 'No Permissions to do that!', 'error')
-				TriggerEvent('mdt:server:AddLog', fullname.." tryed to delete a Report with the ID ("..id..")")
+				TriggerEvent('mdt:server:AddLog', fullname.." forsøgte af slette våben med ID ("..id..")")
 			end
 		end
 	end
@@ -800,13 +800,13 @@ RegisterNetEvent('mdt:server:deleteIncidents', function(id)
             MySQL.update("UPDATE `mdt_convictions` SET `warrant` = '0' WHERE `linkedincident` = :id", {id = id}) -- Delete any outstanding warrants from incidents
             MySQL.update("DELETE FROM `mdt_incidents` WHERE id=:id", { id = id }, function(rowsChanged)
                 if rowsChanged > 0 then
-                    TriggerEvent('mdt:server:AddLog', "A Incident was deleted by "..fullName.." with the ID ("..id..")")
+                    TriggerEvent('mdt:server:AddLog', "En hændelse blev slettet "..fullName.." med ID ("..id..")")
                 end
             end)
         else
             local fullname = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
             TriggerClientEvent("QBCore:Notify", src, 'No Permissions to do that!', 'error')
-            TriggerEvent('mdt:server:AddLog', fullname.." tried to delete an Incident with the ID ("..id..")")
+            TriggerEvent('mdt:server:AddLog', fullname.." forsøgte at slette hændelse med ID ("..id..")")
         end
     end
 end)
@@ -819,7 +819,7 @@ RegisterNetEvent('mdt:server:deleteBolo', function(id)
 		if JobType == 'police' then
 			local fullname = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 			MySQL.update("DELETE FROM `mdt_bolos` WHERE id=:id", { id = id, jobtype = JobType })
-			TriggerEvent('mdt:server:AddLog', "A BOLO was deleted by "..fullname.." with the ID ("..id..")")
+			TriggerEvent('mdt:server:AddLog', "Efterlysning slettet af "..fullname.." med ID ("..id..")")
 		end
 	end
 end)
@@ -832,7 +832,7 @@ RegisterNetEvent('mdt:server:deleteICU', function(id)
 		if JobType == 'ambulance' then
 			local fullname = Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 			MySQL.update("DELETE FROM `mdt_bolos` WHERE id=:id", { id = id, jobtype = JobType })
-			TriggerEvent('mdt:server:AddLog', "A ICU Check-in was deleted by "..fullname.." with the ID ("..id..")")
+			TriggerEvent('mdt:server:AddLog', "ICU tjek ind slettet "..fullname.." med ID ("..id..")")
 		end
 	end
 end)
